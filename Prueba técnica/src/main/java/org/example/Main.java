@@ -11,8 +11,10 @@ public class Main {
         numberArrayList.add(2);
         numberArrayList.add(5);
         numberArrayList.add(3);
+        int[] nums = {1,2,3,1};
         System.out.println(hasTwoElementsWithSum_LowResources(numberArrayList, 8));
         System.out.println(plusTwoElementOfAnListManyResources(numberArrayList, 9));
+        System.out.println(containsDuplicates(nums));
     }
 
     public static boolean hasTwoElementsWithSum_LowResources(List<Integer> numbers, int expectedSum){
@@ -36,7 +38,6 @@ public class Main {
     }
 
     public static boolean plusTwoElementOfAnListManyResources(List<Integer> numbers, int expectedSum){
-
         boolean result = false;
         //loop complexity O(n^2)
 
@@ -52,5 +53,19 @@ public class Main {
             }
         }
         return result;
+    }
+
+    public static boolean containsDuplicates(int[] nums) {
+        // i believe it meets the solution, i don't have a second loop, and i don't use class functions like hashset.contains() or something similar.
+        boolean[] vistos = new boolean[1001]; //my only problem with this is i have tu decide a limit, if the array have a number bigger that [n] this will crash
+
+        for (int num : nums) {
+            if (vistos[num]) { //i ask if the position with that number was already saw it
+                return true;
+            }
+            vistos[num] = true; //if not, i save a flag in that position
+        }
+
+        return false;
     }
 }
